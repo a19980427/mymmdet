@@ -7,5 +7,6 @@ if __name__ == '__main__':
 
     print("hello world")
     print("why why why ")
+    print("goasd")
 
     print(torch.__version__)
