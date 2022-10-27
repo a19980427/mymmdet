@@ -1,7 +1,5 @@
 # dataset settings
 dataset_type = 'CocoDataset'
-
-# 修改数据集位置
 data_root = '/root/autodl-pub/COCO2017'
 
 img_norm_cfg = dict(
@@ -9,7 +7,7 @@ img_norm_cfg = dict(
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', with_bbox=True),
-    dict(type='Resize', img_scale=(1333, 800), keep_ratio=True),
+    dict(type='Resize', img_scale=(448, 448), keep_ratio=True),
     dict(type='RandomFlip', flip_ratio=0.5),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='Pad', size_divisor=32),
@@ -20,7 +18,7 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='MultiScaleFlipAug',
-        img_scale=(1333, 800),
+        img_scale=(448, 448),
         flip=False,
         transforms=[
             dict(type='Resize', keep_ratio=True),
@@ -32,8 +30,8 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=2,
-    workers_per_gpu=2,
+    samples_per_gpu=3,
+    workers_per_gpu=6,
     train=dict(
         type=dataset_type,
         ann_file=data_root + 'annotations/instances_train2017.json',
@@ -46,7 +44,7 @@ data = dict(
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/instances_val2017.json',
-        img_prefix=data_root + 'val2017/',
+        ann_file=data_root + 'annotations/instances_test2017.json',
+        img_prefix=data_root + 'test2017/',
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric='bbox')
