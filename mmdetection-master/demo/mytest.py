@@ -1,3 +1,7 @@
+import torch
+
+print(torch.cuda.is_available())
+
 from mmdet.apis import init_detector, inference_detector, show_result_pyplot
 
 # %%
