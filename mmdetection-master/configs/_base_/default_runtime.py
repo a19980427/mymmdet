@@ -14,7 +14,7 @@ log_level = 'INFO'
 # 从一个给定路径里加载模型作为预训练模型，它并不会消耗训练时间
 load_from = None
 # 从给定路径里恢复检查点(checkpoints)，训练模式将从检查点保存的轮次开始恢复训练。
-resume_from = '/home/qihang/sayuri/mmdetection-master/tools/work_dirs/faster_rcnn_swin_t-p4-w7_fpn_3x_coco/latest.pth'
+resume_from = '/root/autodl-tmp/qihang/weights_cache/deformable_detr_twostage_refine_r50_16x2_50e_coco/latest.pth'
 workflow = [('train', 1)]
 
 # disable opencv multithreading to avoid system being overloaded
@@ -27,3 +27,8 @@ mp_start_method = 'fork'
 #       or not by default.
 #   - `base_batch_size` = (8 GPUs) x (2 samples per GPU).
 auto_scale_lr = dict(enable=False, base_batch_size=16)
+
+# 我的配置
+myconfig = dict()
+myconfig['voc_py'] = '/home/qihang/sayuri/mmdetection-master/configs/_base_/datasets/voc0712.py'
+
