@@ -1,12 +1,12 @@
-# _base_ = [
-#     '../_base_/datasets/coco_detection.py', '../_base_/default_runtime.py'
-# ]
-
-
 _base_ = [
-    '/home/qihang/sayuri/mmdetection-master/configs/_base_/datasets/voc0712.py',
-    '../_base_/default_runtime.py'
+    '../_base_/datasets/coco_detection.py', '../_base_/default_runtime.py'
 ]
+
+
+# _base_ = [
+#     '/home/qihang/sayuri/mmdetection-master/configs/_base_/datasets/voc0712.py',
+#     '../_base_/default_runtime.py'
+# ]
 
 model = dict(
     type='DeformableDETR',
@@ -31,7 +31,7 @@ model = dict(
     bbox_head=dict(
         type='DeformableDETRHead',
         num_query=300,
-        num_classes=20,
+        num_classes=80,
         in_channels=2048,
         sync_cls_avg_factor=True,
         as_two_stage=False,
@@ -157,7 +157,7 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=12,
+    samples_per_gpu=4,
     workers_per_gpu=2,
     train=dict(filter_empty_gt=False, pipeline=train_pipeline),
     val=dict(pipeline=test_pipeline),

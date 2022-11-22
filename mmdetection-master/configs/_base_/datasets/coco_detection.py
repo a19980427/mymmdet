@@ -2,7 +2,7 @@
 dataset_type = 'CocoDataset'
 
 # 修改数据集位置
-data_root = '/root/autodl-pub/COCO2017'
+data_root = '/root/autodl-tmp/qihang/coco2017/'
 
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
@@ -32,7 +32,7 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=2,
+    samples_per_gpu=4,
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
